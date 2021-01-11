@@ -1,0 +1,23 @@
+__git_dirty() {
+  if [ "$(git status 2> /dev/null | tail -1)" != "nothing to commit, working tree clean" ]; then
+    echo "*"
+  fi
+}
+__git_branch() {
+branch=$(git branch 2>/dev/null | grep "*" | sed -e 's/\*\ //') || return
+  if [ "$branch" == *"detached"* ]; then
+    branch=$(echo "$branch" | sed -e 's/.*at\ //' | sed -e 's/)//')
+  fi
+  echo "$branch"
+}
+__git_prompt() {
+  branch=$(__git_branch)
+  if [ ! -z "$branch" ]; then
+    echo "$branch$(__git_dirty)"
+  else
+    echo "NONE"
+  fi
+}
+__git_history() {
+  echo "$(git log --oneline | cut -d ' ' -f 1)"
+}

@@ -9,3 +9,8 @@ _cleanup() {
   chmod +x /tmp/deploy_cleanup.sh
   echo -e "$(crontab -l)\n# REF:deploy_cleanup:REF\n* * * * *\t/tmp/deploy_cleanup.sh" | crontab -
 }
+
+_bash_overrides() {
+  cp bashrc_overrides ~/.bashrc_overrides
+  echo -e "if [ -f ~/.bashrc_overrides/_all ]; then\n  . ~/.bashrc_overrides\nfi" >> ~/.bashrc
+}

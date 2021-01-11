@@ -1,0 +1,9 @@
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
+# create unlimited history in memory/storage (more effective grepping)
+HISTSIZE=
+HISTFILESIZE=
