@@ -12,5 +12,5 @@ _cleanup() {
 
 _bash_overrides() {
   cp -r bashrc_overrides ~/.bashrc_overrides
-  echo -e "if [ -f ~/.bashrc_overrides/_all ]; then\n  . ~/.bashrc_overrides\nfi" >> ~/.bashrc
+  echo -e "if [ -f ~/.bashrc_overrides/_all ]; then\n  . ~/.bashrc_overrides/_all\nfi" >> ~/.bashrc
 }
